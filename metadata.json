@@ -1,0 +1,8 @@
+{
+  "name": "CPU Power Governor",
+  "description": "Enables the ability to swap between kernel governors for the CPU useful for laptops.",
+  "uuid": "cpupower-governors@icar.github.com",
+  "shell-version": [
+    "3.38"
+  ]
+}
