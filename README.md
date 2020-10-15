@@ -13,4 +13,4 @@ Tested on Gnome 3.38.1
 
 ## Persistance
 
-If you'd like to make the governor of your choice persistant across reboots, `systemctl enable cpupower.service`.
+If you would like to define a governor on boot, check `cpupower` manual. 
