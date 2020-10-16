@@ -74,7 +74,12 @@ class Indicator extends PanelMenu.Button {
             Util.spawn(['/bin/bash', '-c', "pkexec cpupower frequency-set -g performance"])
         });
         this.menu.addMenuItem(item4);
-
+        
+        let item5 = new PopupMenu.PopupMenuItem(_("Schedutil"));
+        item5.connect('activate', () => {
+            Util.spawn(['/bin/bash', '-c', "pkexec cpupower frequency-set -g schedutil"])
+        });
+        this.menu.addMenuItem(item5);
     }
 });
 
