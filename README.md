@@ -1,4 +1,7 @@
 # cpupower-governors
+
+![Example screenshot of the extension](example.png)
+
 Enables the ability to swap between kernel governors for the CPU useful for laptops.
 * Balanced: Mode controlled by the schedutil governor. Frequency changes dynamically and in a smart way. 
 * Performance: Run the CPU at the maximum frequency.
