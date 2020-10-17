@@ -12,4 +12,6 @@ Tested on Gnome 3.38.1
 
 ## Persistance
 
-If you would like to define a governor on boot, check `cpupower` manual. 
+If you would like to define a governor on boot, check `cpupower` manual. Normally, it consists of two steps:
+1. Edit `/etc/default/cpupower` accordingly.
+2. Enable the service `systemctl enable cpupower.service`.
