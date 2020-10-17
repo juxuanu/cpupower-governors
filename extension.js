@@ -34,42 +34,38 @@ const GLib = imports.gi.GLib;
 const Me = imports.misc.extensionUtils.getCurrentExtension();
 const Gio = imports.gi.Gio;
 
-const Indicator = GObject.registerClass(
-class Indicator extends PanelMenu.Button {
+const PopupMenu = GObject.registerClass(
+class PopupCPUMenuItem extends PopupMenu.PopupBaseMenuItem {
     _init() {
         super._init(0.0, _('CPU Governor'));
-
-        let box = new St.BoxLayout({ style_class: 'panel-status-menu-box' });
 
         let icon = new St.Icon({
             style_class: 'system-status-icon',
             icon_name: 'main-icon',
         });
         icon.gicon = Gio.icon_new_for_string(`${Me.path}/icons/main.svg`);
-        box.add_child(icon);
 
         box.add_child(PopupMenu.arrowIcon(St.Side.BOTTOM));
         this.add_child(box);
 
-        let item = new PopupMenu.PopupMenuItem(_('Battery Life'));
-        item.connect('activate', () => {
+        let itemBattery = new PopupMenu.PopupMenuItem(_('Battery Life'));
+        Main.panel.statusArea.aggregateMenu._power._item.menu.addMenuItem(itemBattery);
+        itemBattery.connect('activate', () => {
             Util.spawn(['/bin/bash', '-c', "pkexec cpupower frequency-set -g powersave"]);
         });
-        this.menu.addMenuItem(item);
 
-        let item5 = new PopupMenu.PopupMenuItem(_("Balanced"));
-        item5.connect('activate', () => {
+        let itemSchedutil = new PopupMenu.PopupMenuItem(_("Balanced"));
+        Main.panel.statusArea.aggregateMenu._power._item.menu.addMenuItem(itemSchedutil);
+        itemSchedutil.connect('activate', () => {
             Util.spawn(['/bin/bash', '-c', "pkexec cpupower frequency-set -g schedutil"])
         });
-        this.menu.addMenuItem(item5);
 
-        let item4 = new PopupMenu.PopupMenuItem(_("Performance"));
-        item4.connect('activate', () => {
+        let itemPerf = new PopupMenu.PopupMenuItem(_("Performance"));
+        Main.panel.statusArea.aggregateMenu._power._item.menu.addMenuItem(itemPerf);
+        itemPerf.connect('activate', () => {
             Util.spawn(['/bin/bash', '-c', "pkexec cpupower frequency-set -g performance"])
         });
-        this.menu.addMenuItem(item4);
-        
-     
+ 
     }
 });
 
@@ -81,7 +77,7 @@ class Extension {
     }
 
     enable() {
-        this._indicator = new Indicator();
+        this._ = new Indicator();
         Main.panel.addToStatusArea(this._uuid, this._indicator);
     }
 
