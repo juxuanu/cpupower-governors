@@ -51,23 +51,17 @@ class Indicator extends PanelMenu.Button {
         box.add_child(PopupMenu.arrowIcon(St.Side.BOTTOM));
         this.add_child(box);
 
-        let item = new PopupMenu.PopupMenuItem(_('Powersave'));
+        let item = new PopupMenu.PopupMenuItem(_('Battery Life'));
         item.connect('activate', () => {
             Util.spawn(['/bin/bash', '-c', "pkexec cpupower frequency-set -g powersave"]);
         });
         this.menu.addMenuItem(item);
 
-        let item2 = new PopupMenu.PopupMenuItem(_("Conservative"));
-        item2.connect('activate', () => {
-            Util.spawn(['/bin/bash', '-c', "pkexec cpupower frequency-set -g conservative"]);
+        let item5 = new PopupMenu.PopupMenuItem(_("Balanced"));
+        item5.connect('activate', () => {
+            Util.spawn(['/bin/bash', '-c', "pkexec cpupower frequency-set -g schedutil"])
         });
-        this.menu.addMenuItem(item2);
-
-        let item3 = new PopupMenu.PopupMenuItem(_("OnDemand"));
-        item3.connect('activate', () => {
-            Util.spawn(['/bin/bash', '-c', "pkexec cpupower frequency-set -g ondemand"]);
-        });
-        this.menu.addMenuItem(item3);
+        this.menu.addMenuItem(item5);
 
         let item4 = new PopupMenu.PopupMenuItem(_("Performance"));
         item4.connect('activate', () => {
@@ -75,11 +69,7 @@ class Indicator extends PanelMenu.Button {
         });
         this.menu.addMenuItem(item4);
         
-        let item5 = new PopupMenu.PopupMenuItem(_("Schedutil"));
-        item5.connect('activate', () => {
-            Util.spawn(['/bin/bash', '-c', "pkexec cpupower frequency-set -g schedutil"])
-        });
-        this.menu.addMenuItem(item5);
+     
     }
 });
 
