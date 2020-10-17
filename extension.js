@@ -29,22 +29,14 @@ const ExtensionUtils = imports.misc.extensionUtils;
 const Main = imports.ui.main;
 const PopupMenu = imports.ui.popupMenu;
 const Util = imports.misc.util; // Needed for Util.spawn
-// const Me = imports.misc.extensionUtils.getCurrentExtension();
-// const Gio = imports.gi.Gio;
 
-const PopupMenu = GObject.registerClass(
+const PopupMenuGO = GObject.registerClass(
 class PopupCPUMenuItem extends PopupMenu.PopupBaseMenuItem {
     _init() {
         super._init(0.0, _('CPU Governor'));
 
-        // let iconBattery = new St.Icon({
-        //     style_class: 'system-status-icon',
-        //     icon_name: 'main-icon',
-        // });
-        // icon.gicon = Gio.icon_new_for_string(`${Me.path}/icons/main.svg`);
-
-        // box.add_child(PopupMenu.arrowIcon(St.Side.BOTTOM));
-        // this.add_child(box);
+        let itemSeparator = new PopupMenu.PopupSeperatorMenuItem();
+        Main.panel.statusArea.aggregateMenu._power._item.menu.addMenuItem(itemSeparator);
 
         let itemBattery = new PopupMenu.PopupMenuItem(_('Battery Life'));
         Main.panel.statusArea.aggregateMenu._power._item.menu.addMenuItem(itemBattery);
@@ -75,7 +67,7 @@ class Extension {
     }
 
     enable() {
-        this._popup = new PopupCPUMenuItem();
+        this._popup = new PopupMenuGO();
         // Main.panel.addToStatusArea(this._uuid, this._popup);
     }
 
