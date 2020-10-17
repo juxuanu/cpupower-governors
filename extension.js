@@ -77,8 +77,8 @@ class Extension {
     }
 
     enable() {
-        this._ = new Indicator();
-        Main.panel.addToStatusArea(this._uuid, this._indicator);
+        this._popup = new PopupCPUMenuItem();
+        Main.panel.addToStatusArea(this._uuid, this._popup);
     }
 
     disable() {
