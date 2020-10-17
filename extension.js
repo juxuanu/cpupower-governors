@@ -27,12 +27,10 @@ const _ = Gettext.gettext;
 
 const ExtensionUtils = imports.misc.extensionUtils;
 const Main = imports.ui.main;
-const PanelMenu = imports.ui.panelMenu;
 const PopupMenu = imports.ui.popupMenu;
 const Util = imports.misc.util; // Needed for Util.spawn
-const GLib = imports.gi.GLib;
-const Me = imports.misc.extensionUtils.getCurrentExtension();
-const Gio = imports.gi.Gio;
+// const Me = imports.misc.extensionUtils.getCurrentExtension();
+// const Gio = imports.gi.Gio;
 
 const PopupMenu = GObject.registerClass(
 class PopupCPUMenuItem extends PopupMenu.PopupBaseMenuItem {
