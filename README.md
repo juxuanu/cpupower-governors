@@ -1,7 +1,6 @@
 # cpupower-governors
 Enables the ability to swap between kernel governors for the CPU useful for laptops.
-* OnDemand: Scales the frequency dynamically according to current load.
-* Conservative: Like OnDemand but more gradually.
+* Balanced: Mode controlled by the schedutil governor. Frequency changes dynamically and in a smart way. 
 * Performance: Run the CPU at the maximum frequency.
 * Powersave: Run the CPU at the minimum frequency.
 
