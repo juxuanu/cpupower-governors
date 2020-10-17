@@ -35,7 +35,7 @@ class PopupCPUMenuItem extends PopupMenu.PopupBaseMenuItem {
     _init() {
         super._init(0.0, _('CPU Governor'));
 
-        let itemSeparator = new PopupMenu.PopupSeperatorMenuItem();
+        let itemSeparator = new PopupMenu.PopupSeparatorMenuItem()
         Main.panel.statusArea.aggregateMenu._power._item.menu.addMenuItem(itemSeparator);
 
         let itemBattery = new PopupMenu.PopupMenuItem(_('Battery Life'));
