@@ -39,14 +39,14 @@ class PopupCPUMenuItem extends PopupMenu.PopupBaseMenuItem {
     _init() {
         super._init(0.0, _('CPU Governor'));
 
-        let icon = new St.Icon({
-            style_class: 'system-status-icon',
-            icon_name: 'main-icon',
-        });
-        icon.gicon = Gio.icon_new_for_string(`${Me.path}/icons/main.svg`);
+        // let iconBattery = new St.Icon({
+        //     style_class: 'system-status-icon',
+        //     icon_name: 'main-icon',
+        // });
+        // icon.gicon = Gio.icon_new_for_string(`${Me.path}/icons/main.svg`);
 
-        box.add_child(PopupMenu.arrowIcon(St.Side.BOTTOM));
-        this.add_child(box);
+        // box.add_child(PopupMenu.arrowIcon(St.Side.BOTTOM));
+        // this.add_child(box);
 
         let itemBattery = new PopupMenu.PopupMenuItem(_('Battery Life'));
         Main.panel.statusArea.aggregateMenu._power._item.menu.addMenuItem(itemBattery);
@@ -82,8 +82,8 @@ class Extension {
     }
 
     disable() {
-        this._indicator.destroy();
-        this._indicator = null;
+        this._popup.destroy();
+        this._popup = null;
     }
 }
 
