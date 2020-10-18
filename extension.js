@@ -75,6 +75,10 @@ class Extension {
         this._popup.destroy();
         this._popup = null;
     }
+
+    destroy() {
+        super.destroy();
+    }
 }
 
 function init(meta) {
