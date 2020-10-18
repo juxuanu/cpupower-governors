@@ -74,9 +74,18 @@ class Extension {
     disable() {
         this._popup.destroy();
         this._popup = null;
+        Main.panel.statusArea.aggregateMenu._power[1].destroy(); //Separator
+        Main.panel.statusArea.aggregateMenu._power[1] = null;
+        Main.panel.statusArea.aggregateMenu._power[2].destroy(); //Battery Life
+        Main.panel.statusArea.aggregateMenu._power[2] = null;
+        Main.panel.statusArea.aggregateMenu._power[3].destroy(); //Balanced
+        Main.panel.statusArea.aggregateMenu._power[3] = null;
+        Main.panel.statusArea.aggregateMenu._power[4].destroy(); //Performance
+        Main.panel.statusArea.aggregateMenu._power[4] = null;
     }
 
     destroy() {
+        this.disable();
         super.destroy();
     }
 }
