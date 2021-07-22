@@ -3,6 +3,6 @@
   "description": "Enables the ability to swap between kernel governors for the CPU useful for laptops.",
   "uuid": "cpupower-governors@icar.github.com",
   "shell-version": [
-    "3.38"
+    "3.38", "40.0", "40.1", "40.2", "40.3"
   ]
 }
